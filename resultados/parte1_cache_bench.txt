@@ -1,0 +1,29 @@
+$ gcc -O0 -Wall -o cache_bench cache_bench.c && ./cache_bench
+== Acceso secuencial vs aleatorio ==
+Array (KB)     seq ns/byte  rand ns/acceso  rand/seq
+4                    0.902           1.765      1.96
+8                    0.880           1.943      2.21
+16                   0.987           2.439      2.47
+32                   1.104           2.751      2.49
+64                   1.004           1.970      1.96
+128                  1.044           2.249      2.15
+256                  0.944           1.818      1.93
+512                  0.891           2.367      2.66
+1024                 0.920           2.491      2.71
+4096                 0.942           3.901      4.14
+16384                0.931           9.853     10.58
+65536                0.941          12.705     13.50
+
+== Stride sobre array de 1024 KB ==
+Stride         ns/acceso
+64 B               4.600
+4096 B             4.822
+Relacion 4096/64: 1.05x
+
+== Conflictos de asociatividad (pointer chasing, L1d 12 vias) ==
+Lineas          64 B      2048 B      4096 B
+8              2.157       2.329       2.179
+12             1.999       2.064       3.201
+16             2.026       2.024       4.880
+24             2.028       3.374       3.669
+32             2.001       3.660       3.865

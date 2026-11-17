@@ -1,0 +1,28 @@
+$ cd /sys/devices/system/cpu/cpu0/cache && grep . index*/{level,type,ways_of_associativity,coherency_line_size,number_of_sets}
+index0/level:1
+index1/level:1
+index2/level:2
+index3/level:3
+index0/type:Data
+index1/type:Instruction
+index2/type:Unified
+index3/type:Unified
+index0/ways_of_associativity:12
+index1/ways_of_associativity:8
+index2/ways_of_associativity:10
+index3/ways_of_associativity:12
+index0/coherency_line_size:64
+index1/coherency_line_size:64
+index2/coherency_line_size:64
+index3/coherency_line_size:64
+index0/number_of_sets:64
+index1/number_of_sets:64
+index2/number_of_sets:2048
+index3/number_of_sets:16384
+$ lscpu | grep -E "Model name|cache"
+Model name:                              12th Gen Intel(R) Core(TM) i7-1255U
+BIOS Model name:                           CPU @ 0.0GHz
+L1d cache:                               96 KiB (2 instances)
+L1i cache:                               64 KiB (2 instances)
+L2 cache:                                2.5 MiB (2 instances)
+L3 cache:                                24 MiB (2 instances)

@@ -1,0 +1,5 @@
+$ for i in 0 1 2 3; do echo -n "Cache level $i: "; cat /sys/devices/system/cpu/cpu0/cache/index${i}/size 2>/dev/null || echo "N/A"; done
+Cache level 0: 48K
+Cache level 1: 32K
+Cache level 2: 1280K
+Cache level 3: 12288K

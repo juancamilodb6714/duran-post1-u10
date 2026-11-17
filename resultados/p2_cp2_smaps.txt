@@ -1,0 +1,32 @@
+$ awk '/^[0-9a-f]+-/{s=/rw-p.*heap|stack|r-xp.*(libc|musl)/} s && /^[0-9a-f]+-|^(Size|Rss|Pss|Shared_Clean|Shared_Dirty|Private_Clean|Private_Dirty|Referenced|Anonymous):/' /proc/$PID/smaps
+560b62d16000-560b62d17000 rw-p 00000000 00:00 0                          [heap]
+Size:                  4 kB
+Rss:                   4 kB
+Pss:                   4 kB
+Shared_Clean:          0 kB
+Shared_Dirty:          0 kB
+Private_Clean:         0 kB
+Private_Dirty:         4 kB
+Referenced:            4 kB
+Anonymous:             4 kB
+7f8cd26f0000-7f8cd2743000 r-xp 00014000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+Size:                332 kB
+Rss:                 332 kB
+Pss:                  22 kB
+Shared_Clean:        332 kB
+Shared_Dirty:          0 kB
+Private_Clean:         0 kB
+Private_Dirty:         0 kB
+Referenced:          332 kB
+Anonymous:             0 kB
+7fff0e782000-7fff0e7a3000 rw-p 00000000 00:00 0                          [stack]
+Size:                132 kB
+Rss:                  12 kB
+Pss:                  12 kB
+Shared_Clean:          0 kB
+Shared_Dirty:          0 kB
+Private_Clean:         0 kB
+Private_Dirty:        12 kB
+Referenced:           12 kB
+Anonymous:            12 kB
+$ kill $PID

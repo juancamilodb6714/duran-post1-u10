@@ -1,0 +1,20 @@
+$ vmstat -s | head -15
+      2022948 K total memory
+       211428 K used memory
+        56600 K active memory
+        11028 K inactive memory
+      1840380 K free memory
+         6348 K buffer memory
+        86740 K swap cache
+      1984508 K total swap
+            0 K used swap
+      1984508 K free swap
+         2051 non-nice user cpu ticks
+            0 nice user cpu ticks
+          710 system cpu ticks
+        32898 idle cpu ticks
+          693 IO-wait cpu ticks
+$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           1.9Gi       206Mi       1.8Gi       148Ki        90Mi       1.7Gi
+Swap:          1.9Gi          0B       1.9Gi

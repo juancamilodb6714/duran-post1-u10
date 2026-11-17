@@ -1,0 +1,95 @@
+$ cat /proc/$$/smaps | head -60
+563753ff1000-56375400a000 r--p 00000000 08:03 260                        /bin/bash
+Size:                100 kB
+KernelPageSize:        4 kB
+MMUPageSize:           4 kB
+Rss:                 100 kB
+Pss:                  50 kB
+Pss_Dirty:             0 kB
+Shared_Clean:        100 kB
+Shared_Dirty:          0 kB
+Private_Clean:         0 kB
+Private_Dirty:         0 kB
+Referenced:          100 kB
+Anonymous:             0 kB
+KSM:                   0 kB
+LazyFree:              0 kB
+AnonHugePages:         0 kB
+ShmemPmdMapped:        0 kB
+FilePmdMapped:         0 kB
+Shared_Hugetlb:        0 kB
+Private_Hugetlb:       0 kB
+Swap:                  0 kB
+SwapPss:               0 kB
+Locked:                0 kB
+THPeligible:           0
+VmFlags: rd mr mw me sd 
+56375400a000-563754077000 r-xp 00019000 08:03 260                        /bin/bash
+Size:                436 kB
+KernelPageSize:        4 kB
+MMUPageSize:           4 kB
+Rss:                 432 kB
+Pss:                 159 kB
+Pss_Dirty:             0 kB
+Shared_Clean:        432 kB
+Shared_Dirty:          0 kB
+Private_Clean:         0 kB
+Private_Dirty:         0 kB
+Referenced:          432 kB
+Anonymous:             0 kB
+KSM:                   0 kB
+LazyFree:              0 kB
+AnonHugePages:         0 kB
+ShmemPmdMapped:        0 kB
+FilePmdMapped:         0 kB
+Shared_Hugetlb:        0 kB
+Private_Hugetlb:       0 kB
+Swap:                  0 kB
+SwapPss:               0 kB
+Locked:                0 kB
+THPeligible:           0
+VmFlags: rd ex mr mw me sd 
+563754077000-5637540a4000 r--p 00086000 08:03 260                        /bin/bash
+Size:                180 kB
+KernelPageSize:        4 kB
+MMUPageSize:           4 kB
+Rss:                  96 kB
+Pss:                  34 kB
+Pss_Dirty:             0 kB
+Shared_Clean:         92 kB
+Shared_Dirty:          0 kB
+Private_Clean:         4 kB
+$ pmap -x $$
+4959:   bash -c { echo "\$ cat /proc/\$\$/smaps | head -60"; head -60 /proc/$$/smaps; echo "\$ pmap -x \$\$"; pmap -x $$; }
+Address           Kbytes     RSS   Dirty Mode  Mapping
+0000563753ff1000     100     100       0 r---- bash
+000056375400a000     436     432       0 r-x-- bash
+0000563754077000     180      96       0 r---- bash
+00005637540a4000      12      12      12 r---- bash
+00005637540a7000      16      16      16 rw--- bash
+00005637540ab000      60      44      44 rw---   [ anon ]
+00005637551d2000       4       0       0 -----   [ anon ]
+00005637551d3000       4       4       4 rw---   [ anon ]
+00007fd917022000      72      64      64 rw---   [ anon ]
+00007fd917034000      56      56       0 r---- libncursesw.so.6.4
+00007fd917042000     164      60       0 r-x-- libncursesw.so.6.4
+00007fd91706b000      92       0       0 r---- libncursesw.so.6.4
+00007fd917082000      20      20      20 r---- libncursesw.so.6.4
+00007fd917087000       4       4       4 rw--- libncursesw.so.6.4
+00007fd917088000      80      80       0 r---- libreadline.so.8.2
+00007fd91709c000     124      56       0 r-x-- libreadline.so.8.2
+00007fd9170bb000      36       0       0 r---- libreadline.so.8.2
+00007fd9170c4000      12      12      12 r---- libreadline.so.8.2
+00007fd9170c7000      24      24      24 rw--- libreadline.so.8.2
+00007fd9170cd000       4       4       4 rw---   [ anon ]
+00007fd9170ce000      80      76       0 r---- ld-musl-x86_64.so.1
+00007fd9170e2000     332     332       0 r-x-- ld-musl-x86_64.so.1
+00007fd917135000     216     104       0 r---- ld-musl-x86_64.so.1
+00007fd91716b000       4       4       4 r---- ld-musl-x86_64.so.1
+00007fd91716c000       4       4       4 rw--- ld-musl-x86_64.so.1
+00007fd91716d000      12      12      12 rw---   [ anon ]
+00007fff21c84000     132      12      12 rw---   [ stack ]
+00007fff21d14000      16       0       0 r----   [ anon ]
+00007fff21d18000       8       4       0 r-x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB            2304    1632     236

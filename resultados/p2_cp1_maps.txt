@@ -1,0 +1,26 @@
+$ gcc -o mymaps mymaps.c && ./mymaps &
+PID: 4953
+stack var addr: 0x7ffc6871ae60
+heap addr:      0x7f72bff17020
+global addr:    0x564562f8f008
+rodata addr:    0x564562f8d000
+Presione Enter para continuar...
+$ PID=$!
+$ cat /proc/$PID/maps
+564562f8b000-564562f8c000 r--p 00000000 08:03 320                        /root/u10post2/mymaps
+564562f8c000-564562f8d000 r-xp 00001000 08:03 320                        /root/u10post2/mymaps
+564562f8d000-564562f8e000 r--p 00002000 08:03 320                        /root/u10post2/mymaps
+564562f8e000-564562f8f000 r--p 00002000 08:03 320                        /root/u10post2/mymaps
+564562f8f000-564562f90000 rw-p 00003000 08:03 320                        /root/u10post2/mymaps
+5645a0fe2000-5645a0fe3000 ---p 00000000 00:00 0                          [heap]
+5645a0fe3000-5645a0fe4000 rw-p 00000000 00:00 0                          [heap]
+7f72bff17000-7f72c0018000 rw-p 00000000 00:00 0 
+7f72c0018000-7f72c002c000 r--p 00000000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+7f72c002c000-7f72c007f000 r-xp 00014000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+7f72c007f000-7f72c00b5000 r--p 00067000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+7f72c00b5000-7f72c00b6000 r--p 0009c000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+7f72c00b6000-7f72c00b7000 rw-p 0009d000 08:03 260105                     /lib/ld-musl-x86_64.so.1
+7f72c00b7000-7f72c00ba000 rw-p 00000000 00:00 0 
+7ffc686fb000-7ffc6871c000 rw-p 00000000 00:00 0                          [stack]
+7ffc68781000-7ffc68785000 r--p 00000000 00:00 0                          [vvar]
+7ffc68785000-7ffc68787000 r-xp 00000000 00:00 0                          [vdso]

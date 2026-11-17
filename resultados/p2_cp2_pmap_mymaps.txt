@@ -1,0 +1,22 @@
+$ pmap -x $PID
+4953:   ./mymaps
+Address           Kbytes     RSS   Dirty Mode  Mapping
+0000564562f8b000       4       4       4 r---- mymaps
+0000564562f8c000       4       4       4 r-x-- mymaps
+0000564562f8d000       4       4       4 r---- mymaps
+0000564562f8e000       4       4       4 r---- mymaps
+0000564562f8f000       4       4       4 rw--- mymaps
+00005645a0fe2000       4       0       0 -----   [ anon ]
+00005645a0fe3000       4       4       4 rw---   [ anon ]
+00007f72bff17000    1028       8       8 rw---   [ anon ]
+00007f72c0018000      80      76       0 r---- ld-musl-x86_64.so.1
+00007f72c002c000     332     252       0 r-x-- ld-musl-x86_64.so.1
+00007f72c007f000     216      80       0 r---- ld-musl-x86_64.so.1
+00007f72c00b5000       4       4       4 r---- ld-musl-x86_64.so.1
+00007f72c00b6000       4       4       4 rw--- ld-musl-x86_64.so.1
+00007f72c00b7000      12      12      12 rw---   [ anon ]
+00007ffc686fb000     132       8       8 rw---   [ stack ]
+00007ffc68781000      16       0       0 r----   [ anon ]
+00007ffc68785000       8       4       0 r-x--   [ anon ]
+---------------- ------- ------- ------- 
+total kB            1860     472      60

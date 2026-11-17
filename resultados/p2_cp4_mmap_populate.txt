@@ -1,0 +1,22 @@
+$ gcc -DUSE_POPULATE -o mmap_populate mmap_fault_cost.c && ./mmap_populate
+Modo: MAP_POPULATE
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                200672.0 ns
+Costo promedio primer toque (con fault):  53.4 ns
+Costo promedio segundo toque (sin fault): 32.7 ns
+Overhead atribuible al page fault:        20.7 ns
+
+Modo: MAP_POPULATE
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                209373.0 ns
+Costo promedio primer toque (con fault):  57.0 ns
+Costo promedio segundo toque (sin fault): 37.2 ns
+Overhead atribuible al page fault:        19.9 ns
+
+Modo: MAP_POPULATE
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                256914.0 ns
+Costo promedio primer toque (con fault):  52.7 ns
+Costo promedio segundo toque (sin fault): 27.2 ns
+Overhead atribuible al page fault:        25.6 ns
+

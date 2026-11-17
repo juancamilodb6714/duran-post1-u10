@@ -1,0 +1,13 @@
+$ wc -l /proc/$$/maps /proc/$$/smaps
+       29 /proc/$$/maps
+      725 /proc/$$/smaps
+      754 total
+$ time (for i in $(seq 500); do cat /proc/$$/maps > /dev/null; done)
+real	0m0.532s
+$ time (for i in $(seq 500); do cat /proc/$$/smaps > /dev/null; done)
+real	0m0.547s
+$ time (for i in $(seq 500); do cat /proc/$$/smaps_rollup > /dev/null; done)
+real	0m0.500s
+$ time (for i in $(seq 500); do pmap -x $$ > /dev/null; done)
+real	0m0.998s
+$ strace -f -e trace=openat pmap -x $$ 2>&1 | grep /proc

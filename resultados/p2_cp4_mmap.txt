@@ -1,0 +1,22 @@
+$ gcc -o mmap_fault_cost mmap_fault_cost.c && ./mmap_fault_cost
+Modo: demand paging (por defecto)
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                3499.0 ns
+Costo promedio primer toque (con fault):  1900.0 ns
+Costo promedio segundo toque (sin fault): 30.3 ns
+Overhead atribuible al page fault:        1869.7 ns
+
+Modo: demand paging (por defecto)
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                3037.0 ns
+Costo promedio primer toque (con fault):  1707.4 ns
+Costo promedio segundo toque (sin fault): 29.3 ns
+Overhead atribuible al page fault:        1678.1 ns
+
+Modo: demand paging (por defecto)
+Tamano de pagina: 4096 bytes, paginas: 200
+Tiempo de la llamada mmap:                2484.0 ns
+Costo promedio primer toque (con fault):  1585.3 ns
+Costo promedio segundo toque (sin fault): 28.5 ns
+Overhead atribuible al page fault:        1556.9 ns
+

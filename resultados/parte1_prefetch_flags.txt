@@ -1,0 +1,64 @@
+$ gcc -O2 -fprefetch-loop-arrays -S -o - cache_bench.c | grep -c prefetch
+6
+$ gcc -O2 -fno-prefetch-loop-arrays -S -o - cache_bench.c | grep -c prefetch
+0
+$ gcc -O2 -fprefetch-loop-arrays -o cache_bench_O2 cache_bench.c && ./cache_bench_O2
+== Acceso secuencial vs aleatorio ==
+Array (KB)     seq ns/byte  rand ns/acceso  rand/seq
+4                    0.242           0.593      2.45
+8                    0.157           0.497      3.16
+16                   0.165           0.510      3.10
+32                   0.134           0.511      3.80
+64                   0.180           0.590      3.28
+128                  0.139           0.637      4.59
+256                  0.188           0.778      4.15
+512                  0.164           0.863      5.25
+1024                 0.171           1.181      6.90
+4096                 0.207           2.608     12.62
+16384                0.185           7.881     42.56
+65536                0.193          11.918     61.84
+
+== Stride sobre array de 1024 KB ==
+Stride         ns/acceso
+64 B               4.679
+4096 B             7.839
+Relacion 4096/64: 1.68x
+
+== Conflictos de asociatividad (pointer chasing, L1d 12 vias) ==
+Lineas          64 B      2048 B      4096 B
+8              2.039       2.133       2.209
+12             2.030       2.065       3.587
+16             2.040       2.023       4.057
+24             1.955       3.168       4.056
+32             2.112       4.112       3.970
+
+$ gcc -O2 -fno-prefetch-loop-arrays -o cache_bench_O2 cache_bench.c && ./cache_bench_O2
+== Acceso secuencial vs aleatorio ==
+Array (KB)     seq ns/byte  rand ns/acceso  rand/seq
+4                    0.291           0.845      2.91
+8                    0.131           0.483      3.69
+16                   0.130           0.530      4.08
+32                   0.258           1.038      4.02
+64                   0.319           0.689      2.16
+128                  0.238           0.794      3.33
+256                  0.182           0.814      4.47
+512                  0.187           1.045      5.60
+1024                 0.233           1.338      5.74
+4096                 0.212           3.317     15.65
+16384                0.181           7.798     43.09
+65536                0.183          10.967     59.88
+
+== Stride sobre array de 1024 KB ==
+Stride         ns/acceso
+64 B               5.001
+4096 B             4.319
+Relacion 4096/64: 0.86x
+
+== Conflictos de asociatividad (pointer chasing, L1d 12 vias) ==
+Lineas          64 B      2048 B      4096 B
+8              1.970       1.970       2.015
+12             2.444       2.096       2.883
+16             3.342       2.760       4.262
+24             2.000       2.996       4.456
+32             1.995       4.235       4.143
+

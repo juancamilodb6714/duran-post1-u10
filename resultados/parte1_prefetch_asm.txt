@@ -1,0 +1,7 @@
+$ gcc -O2 -fprefetch-loop-arrays -S -o - cache_bench.c | awk "/^[a-z_]+:/{f=\$1} /prefetch/{print f, \$0}"
+bench_rand: 	prefetcht0	184(%rdx)
+bench_rand: 	prefetcht0	248(%rdx)
+bench_rand: 	prefetcht0	92(%rcx)
+bench_rand: 	prefetcht0	(%r14)
+bench_rand: 	prefetcht0	(%rax)
+bench_conflict: 	prefetcht0	(%rsi,%rdi)

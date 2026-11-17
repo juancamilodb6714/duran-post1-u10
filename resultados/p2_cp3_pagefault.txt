@@ -1,0 +1,9 @@
+$ gcc -o pagefault_demo pagefault_demo.c && ./pagefault_demo
+--- Antes del memset ---
+VmPeak:	  103240 kB
+VmSize:	  103240 kB
+VmRSS:	     484 kB
+--- Despues del memset ---
+VmPeak:	  103240 kB
+VmSize:	  103240 kB
+VmRSS:	  102880 kB
